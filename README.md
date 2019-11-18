@@ -1,9 +1,11 @@
 # Algorithm-Practice-EveryWeek
 Algorithm-Practice-EveryWeek-算法更新每周
 
+详细记录见 算法练习记录-天 目录
+
 
 ## 2019-07-06 
-　更新TopN算法 参考文章见算法总结
+- 更新TopN算法 参考文章见算法总结
 
 ## 2019-07-21 ARTS算法练习更新
 
