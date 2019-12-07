@@ -22,21 +22,40 @@ import java.util.Queue;
  *
  * @author mayday05
  * @date 2019-12-07
+ * -------- 提交验证成功
  */
 public class Leetcode107 {
 
     public static void main(String[] args) {
         // 首先构建该二叉树出来
         LinkedList<Integer> inputList = new LinkedList<>(
-                Arrays.asList(new Integer[]{3, 9, 20, null, null, 15, 7})
+                // Arrays.asList(new Integer[]{3, 9, 20, null, null, 15, 7})
+                // 注意这才是本题二叉树的正确输入数组
+                Arrays.asList(new Integer[]{3, 9, null, null, 20, 15, null, null, 7})
+
         );
         TreeNode treeNode = new Leetcode107().createBinaryTree(inputList);
+
+        new Leetcode107().preOrderTraveral(treeNode);
+        System.out.println("_______________");
+
         List<List<Integer>> result = new Leetcode107().levelOrderBottom(treeNode);
+
+
         for (List<Integer> list : result) {
-            for (Integer value : list) {
-                System.out.println(value + "");
-            }
+            System.out.println("_______________");
+            System.out.println(list);
         }
+
+        /**
+         * 打印结果为
+         * _______________
+         * [15, 7]
+         * _______________
+         * [9, 20]
+         * _______________
+         * [3]
+         */
     }
 
     /**
@@ -57,6 +76,20 @@ public class Leetcode107 {
             node.right = createBinaryTree(inputList);
         }
         return node;
+    }
+
+    /**
+     * 二叉树前序编译
+     * 
+     * @param node
+     */
+    public void preOrderTraveral(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.val);
+        preOrderTraveral(node.left);
+        preOrderTraveral(node.right);
     }
 
 
@@ -111,3 +144,5 @@ public class Leetcode107 {
         }
     }
 }
+
+
