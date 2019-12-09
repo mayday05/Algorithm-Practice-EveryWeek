@@ -2,13 +2,21 @@ package cn.mayday.algorithms.day20191209;
 
 import java.util.Stack;
 
+/**
+ * Leetcode 232
+ *
+ *
+ */
 public class MyQueue {
+
     /**
-     * 真实存储
+     * 入队列存储位置
      */
     private Stack<Integer> stackA = new Stack<>();
     /**
-     * 辅助存储
+     * 出栈调整队列存储位置------相当于轮渡等船一样，到点了这批人先排个队。
+     *
+     * 注意1： 两个栈加起来才是最终队列元素
      */
     private Stack<Integer> stackB = new Stack<>();
 
@@ -68,8 +76,16 @@ public class MyQueue {
         }
     }
 
+    /**
+     * 判断是否为空
+     *
+     * @return
+     */
     public boolean empty() {
-        if (stackA.isEmpty()) {
+        /**
+         * 注意必须两个栈都为空时才为空。
+         */
+        if (stackA.isEmpty() && stackB.isEmpty()) {
             return true;
         }
         return false;
