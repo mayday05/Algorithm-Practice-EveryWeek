@@ -13,3 +13,15 @@ Algorithm-Practice-EveryWeek-算法更新每周
 
 ## 2019-11-18 ARTS leedcode 20  有效的括号
 - Leetcode 20 有效的括号
+
+## 2019-12-07-二叉树深度遍历
+- Leetcode 107
+
+## 2019-12-09-Leet232-栈实现队列出入栈
+- Leetcode 232 考察栈和队列 
+
+## 2019-12-11-Leetcode347-优先队列TopK
+- Leetcode 347【难度中等】 考查二叉堆，优先队列
+
+## 2019-12-12-全排列下一个数leetcode31
+- Leetcode 31【难度中等】 考查字典序算法 
