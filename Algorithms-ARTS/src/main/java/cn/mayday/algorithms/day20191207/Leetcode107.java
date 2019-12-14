@@ -1,0 +1,145 @@
+package cn.mayday.algorithms.day20191207;
+
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+/**
+ * 107
+ * 二叉树的层次遍历 II
+ * <p>
+ * input :[3,9,20,null,null,15,7]
+ * output:
+ * [
+ * [15,7],
+ * [9,20],
+ * [3]
+ * ]
+ *
+ * @author mayday05
+ * @date 2019-12-07
+ */
+public class Leetcode107 {
+
+    public static void main(String[] args) {
+        // 首先构建该二叉树出来
+        LinkedList<Integer> inputList = new LinkedList<>(
+                // Arrays.asList(new Integer[]{3, 9, 20, null, null, 15, 7})
+                // 注意这才是本题二叉树的正确输入数组
+                Arrays.asList(new Integer[]{3, 9, null, null, 20, 15, null, null, 7})
+
+        );
+        TreeNode treeNode = new Leetcode107().createBinaryTree(inputList);
+
+        new Leetcode107().preOrderTraveral(treeNode);
+        System.out.println("_______________");
+
+        List<List<Integer>> result = new Leetcode107().levelOrderBottom(treeNode);
+
+
+        for (List<Integer> list : result) {
+            System.out.println("_______________");
+            System.out.println(list);
+        }
+
+        /**
+         * 打印结果为
+         * _______________
+         * [15, 7]
+         * _______________
+         * [9, 20]
+         * _______________
+         * [3]
+         */
+    }
+
+    /**
+     * 构建二叉树
+     *
+     * @param inputList
+     * @return
+     */
+    public TreeNode createBinaryTree(LinkedList<Integer> inputList) {
+        if (null == inputList || inputList.isEmpty()) {
+            return null;
+        }
+        TreeNode node = null;
+        Integer firstIntValue = inputList.removeFirst();
+        if (null != firstIntValue) {
+            node = new TreeNode(firstIntValue);
+            node.left = createBinaryTree(inputList);
+            node.right = createBinaryTree(inputList);
+        }
+        return node;
+    }
+
+    /**
+     * 二叉树前序编译
+     *
+     * @param node
+     */
+    public void preOrderTraveral(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.val);
+        preOrderTraveral(node.left);
+        preOrderTraveral(node.right);
+    }
+
+
+    /**
+     * 首先想到的方法是 递归
+     *
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+
+        LinkedList<List<Integer>> result = new LinkedList<>();
+        if (root == null) {
+            return result;
+        }
+        // 广度优先遍历后，List倒换下位置
+        Queue<TreeNode> queue = new LinkedList<>();
+        // 入列第一个
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            List<Integer> oneLevel = new ArrayList<>();
+            // 每次出一层数据（把这一层的数据都取出来）--注意这里和广度优先遍历的区别，这里一定要把这一层全部打印出来，而不是一个个的打印
+            int count = queue.size();
+            // count为当前层，节点总数
+            for (int i = 0; i < count; i++) {
+                // 出队
+                TreeNode node = queue.poll();
+                oneLevel.add(node.val);
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+            // 放置到最前面
+            result.addFirst(oneLevel);
+        }
+        return result;
+    }
+
+    /**
+     * 二叉树定义
+     */
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+    }
+}

@@ -9,22 +9,14 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.mayday</groupId>
-    <artifactId>leetcode</artifactId>
+    <artifactId>thread</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>leetcode</name>
-    <packaging>pom</packaging>
-
-    <description>For leetcode practice</description>
+    <name>thread-leetcode-practice</name>
+    <description>For mayday leetcode practice</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
-
-    <modules>
-        <module>Algorithms-ARTS</module>
-        <module>Database-ARTS</module>
-        <module>Thread-ARTS</module>
-    </modules>
 
     <dependencies>
         <dependency>

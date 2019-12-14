@@ -1,0 +1,74 @@
+package cn.mayday.algorithms.day20191210;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+
+/**
+ * Leetcode 347 前K个高频元素
+ * <p>
+ * 运行是否通过：
+ */
+public class Leetcode347K {
+
+    public static void main(String[] args) {
+        int[] nums = {2, 2, 1, 1, 1, 3};
+        int k = 2;
+        System.out.println("++++ result ++++" + new Leetcode347K().topKFrequent(nums, k));
+        // {1,2}
+        // 假设数组长度为几亿
+    }
+
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        Integer[] topHeap = new Integer[k];
+
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                map.put(nums[i], map.get(nums[i]) + 1);
+            } else {
+                map.put(nums[i], 1);
+            }
+        }
+
+        // 注意：所谓最大最小优先队列说的是出队是，优先最大还是最小的出队。这里需要比较的对象是最小的。
+        /**
+         * 定义优先队列，并定义比较函数(构建最小优先队列)。
+         *
+         * 最小优先队列：无论入队顺序如何，都是当前最小的元素优先出队
+         * 最小优先队列采用最小堆实现，最小堆的堆顶是整个堆中的最小元素。
+         *
+         * 如何定义是最大优先队列还是最小优先队列，看自定义比较器
+         * 默认升序，也就是最小优先队列。
+         *
+         */
+        PriorityQueue<Integer> queue = new PriorityQueue<>(
+                Comparator.comparingInt(map::get)
+        );
+
+        for (int key : map.keySet()) {
+            if (queue.size() < k) {
+                // 小于时，直接入队即可
+                queue.add(key);
+            } else {
+                // 获取最小堆的堆顶元素对应的频率值,如果待比较的元素出现频率比最小堆堆顶大，先删除堆顶元素，再入队
+                int count = map.get(queue.peek());
+                if (map.get(key) > count) {
+                    queue.remove();
+                    queue.add(key);
+                }
+            }
+        }
+        LinkedList<Integer> result = new LinkedList<>();
+        while (!queue.isEmpty()) {
+            // 注意最小的放在最后
+            result.addFirst(queue.remove());
+        }
+        return result;
+    }
+}
