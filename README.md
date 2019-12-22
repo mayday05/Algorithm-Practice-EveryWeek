@@ -4,6 +4,16 @@ Algorithm-Practice-EveryWeek-算法更新每周
 详细记录见 算法练习记录-天 目录
 
 
+
+> 刷题时建议按类型刷题，参考刷题类型分类 [Leetcode 分类顺序表](https://cspiration.com/leetcodeClassification#10309)
+>
+> 同时已经这样在刷题的参考 [29DCH-LeetCode-MyCodesCollection](https://github.com/29DCH/LeetCode-MyCodesCollection) 
+
+------
+
+
+
+
 ## 2019-07-06 
 - 更新TopN算法 参考文章见算法总结
 
@@ -25,3 +35,9 @@ Algorithm-Practice-EveryWeek-算法更新每周
 
 ## 2019-12-12-全排列下一个数leetcode31
 - Leetcode 31【难度中等】 考查字典序算法 
+
+
+
+## 2019-12-22-Leetcode108有序数组转平衡二叉树
+
+- Leetcode 108【难度简单】 考查二叉树遍历，中序遍历的逆过程
