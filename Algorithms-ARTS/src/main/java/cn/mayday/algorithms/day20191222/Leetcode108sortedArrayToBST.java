@@ -1,7 +1,5 @@
 package cn.mayday.algorithms.day20191222;
 
-import java.util.Arrays;
-
 /**
  * @description: 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。
  * <p>
@@ -19,7 +17,6 @@ import java.util.Arrays;
  * /   /
  * -10  5
  * @author: mayday
- * @date: 2019/12/22 9:34
  * @version: 1.0
  *
  * 运行通过
