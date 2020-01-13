@@ -35,6 +35,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.taobao.arthas/arthas-packaging -->
+        <dependency>
+            <groupId>com.taobao.arthas</groupId>
+            <artifactId>arthas-packaging</artifactId>
+            <version>3.1.7</version>
+        </dependency>
     </dependencies>
 
     <build>
